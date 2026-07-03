@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/racks-color.webp">
+<meta name="ext-resource-dependency" content="assets/cardio-treadmill.webp">
+<meta name="ext-resource-dependency" content="assets/cable-zone.webp">
+<meta name="ext-resource-dependency" content="assets/smith-rack.webp">
+<meta name="ext-resource-dependency" content="assets/dumbbells-gold.webp">
+<meta name="ext-resource-dependency" content="assets/locker.webp">
+<meta name="ext-resource-dependency" content="assets/washroom.webp">
+<meta name="ext-resource-dependency" content="assets/daylight-bench.webp">
+<meta name="ext-resource-dependency" content="assets/floor-people.webp">
+<meta name="ext-resource-dependency" content="assets/mural-nevergiveup.webp">
+<meta name="ext-resource-dependency" content="assets/hanuman.webp">
+<meta name="ext-resource-dependency" content="assets/floor-wide.webp">
+<meta name="ext-resource-dependency" content="assets/benches.webp">
+<meta name="ext-resource-dependency" content="assets/hanuman-floor.webp">
+<meta name="ext-resource-dependency" content="assets/dumbbell-rack.webp">
+<meta name="ext-resource-dependency" content="assets/mural-restroom.webp">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0B0B0C"/><g transform="translate(30,30) scale(0.4)"><rect x="0" y="38" width="100" height="12" rx="6" fill="#E6B94E"/><rect x="-4" y="22" width="16" height="44" rx="5" fill="#E53935"/><rect x="88" y="22" width="16" height="44" rx="5" fill="#E53935"/><rect x="-16" y="30" width="10" height="28" rx="4" fill="#E6B94E"/><rect x="106" y="30" width="10" height="28" rx="4" fill="#E6B94E"/></g></svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0B0B0C;color:#F4F2EE;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:url('assets/cursor-dumbbell.png') 29 16,auto}
+  a,button,select,[onclick],label{cursor:url('assets/cursor-dumbbell.png') 29 16,pointer}
+  input,textarea{cursor:text}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  input,textarea,select,button{font-family:inherit}
+  section{scroll-margin-top:78px}
+  ::selection{background:#E6B94E;color:#0B0B0C}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+  @keyframes glowPulse{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes marqueeGold{0%{background-position:0 0}100%{background-position:200% 0}}
+  @keyframes heroUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+  @keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.14)}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;overflow:hidden;padding-bottom:{{ pageBottomPad }}">
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div data-progress style="position:fixed;top:0;left:0;right:0;height:3px;z-index:95;background:linear-gradient(90deg,#E53935,#F07A2E,#E6B94E);transform:scaleX(0);transform-origin:left;pointer-events:none;will-change:transform"></div>
+
+<!-- ===== HEADER ===== -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:{{ headerPad }} clamp(18px,4vw,56px);background:{{ headerBg }};backdrop-filter:{{ headerBlur }};-webkit-backdrop-filter:{{ headerBlur }};border-bottom:{{ headerBorder }};box-shadow:{{ headerShadow }};transition:background .35s ease,padding .35s ease,box-shadow .35s ease">
+  <a href="#home" style="display:flex;align-items:center;gap:12px">
+    <img src="assets/logo.png" alt="Arya Fitness" style="height:38px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))">
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:30px">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="8">
+        <a href="{{ link.href }}" style="font-size:14px;font-weight:500;letter-spacing:.3px;color:#D9D7D4;padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s" style-hover="color:#E6B94E;border-bottom-color:#E6B94E">{{ link.label }}</a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="#contact" style="font-family:'Bebas Neue';font-size:18px;letter-spacing:1.5px;color:#F4F2EE;padding:11px 20px;border:1.5px solid rgba(255,255,255,.28);border-radius:8px;transition:all .25s" style-hover="border-color:#E6B94E;color:#E6B94E">FREE TRIAL</a>
+      <a href="#membership" data-magnetic style="font-family:'Bebas Neue';font-size:18px;letter-spacing:1.5px;color:#0B0B0C;padding:12px 26px;border-radius:8px;background:linear-gradient(90deg,#E53935,#E6B94E);box-shadow:0 8px 24px rgba(229,57,53,.35);transition:transform .18s ease-out,box-shadow .2s" style-hover="box-shadow:0 12px 30px rgba(230,185,78,.45)">JOIN NOW</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:transparent;border:none;cursor:pointer;padding:8px">
+      <span style="width:26px;height:2.5px;background:#F4F2EE;border-radius:2px"></span>
+      <span style="width:26px;height:2.5px;background:#F4F2EE;border-radius:2px"></span>
+      <span style="width:18px;height:2.5px;background:#E6B94E;border-radius:2px"></span>
+    </button>
+  </sc-if>
+</header>
+
+<!-- ===== MOBILE MENU ===== -->
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(9,9,10,.97);backdrop-filter:blur(10px);display:flex;flex-direction:column;padding:26px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:36px">
+      <img src="assets/logo.png" alt="Arya Fitness" style="height:34px">
+      <button onClick="{{ closeMenu }}" aria-label="Close" style="background:transparent;border:none;color:#F4F2EE;font-size:34px;line-height:1;cursor:pointer;font-family:'Bebas Neue'">×</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="8">
+        <a href="{{ link.href }}" onClick="{{ closeMenu }}" style="font-family:'Bebas Neue';font-size:34px;letter-spacing:1.5px;color:#F4F2EE;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)">{{ link.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
+      <a href="#membership" onClick="{{ closeMenu }}" style="text-align:center;font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#0B0B0C;padding:15px;border-radius:9px;background:linear-gradient(90deg,#E53935,#E6B94E)">JOIN NOW</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="text-align:center;font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#F4F2EE;padding:15px;border-radius:9px;border:1.5px solid rgba(255,255,255,.28)">BOOK FREE TRIAL</a>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ===== HERO ===== -->
+<section id="home" style="position:relative;min-height:100vh;display:flex;align-items:center;padding:120px clamp(18px,5vw,80px) 90px;background:#0B0B0C;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:url('assets/hero-cardio.webp');background-size:cover;background-position:center;animation:kenburns 26s ease-in-out infinite alternate;will-change:transform"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.72) 0%,rgba(11,11,12,.55) 40%,rgba(11,11,12,.9) 100%)"></div>
+  <div style="position:absolute;top:-140px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(230,185,78,.28),transparent 68%);filter:blur(20px);animation:glowPulse 6s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;bottom:-160px;left:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(229,57,53,.26),transparent 68%);filter:blur(20px);animation:glowPulse 7s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;width:100%">
+    <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid rgba(230,185,78,.4);border-radius:100px;background:rgba(230,185,78,.08);margin-bottom:26px;animation:heroUp .8s cubic-bezier(.22,.7,.2,1) both">
+      <span style="width:7px;height:7px;border-radius:50%;background:#E6B94E;box-shadow:0 0 10px #E6B94E"></span>
+      <span style="font-size:12.5px;font-weight:600;letter-spacing:2.5px;color:#E6B94E;text-transform:uppercase">Panvel · Maharashtra</span>
+    </div>
+    <h1 style="font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(48px,8.5vw,116px);line-height:.92;letter-spacing:.5px;margin:0;text-transform:uppercase;color:#F4F2EE;max-width:14ch;text-shadow:0 6px 40px rgba(0,0,0,.5);animation:heroUp .9s cubic-bezier(.22,.7,.2,1) .12s both">Transform Your Body.<br><span style="background:linear-gradient(90deg,#E53935,#FF7A34,#E6B94E,#FF7A34,#E53935);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite">Build Your Discipline.</span></h1>
+    <p style="max-width:56ch;margin:26px 0 0;font-size:clamp(15px,1.6vw,18.5px);line-height:1.65;color:#C4C2BE;animation:heroUp .9s cubic-bezier(.22,.7,.2,1) .26s both">Premium gym experience with world-class equipment, certified trainers, and a motivating community in the heart of Panvel.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:heroUp .9s cubic-bezier(.22,.7,.2,1) .4s both">
+      <a href="#membership" data-magnetic style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#0B0B0C;padding:16px 40px;border-radius:9px;background:linear-gradient(90deg,#E53935,#E6B94E);box-shadow:0 14px 34px rgba(229,57,53,.4);transition:transform .18s ease-out,box-shadow .2s" style-hover="box-shadow:0 18px 44px rgba(230,185,78,.5)">JOIN TODAY</a>
+      <a href="#contact" data-magnetic style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#F4F2EE;padding:16px 40px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.04);backdrop-filter:blur(6px);transition:border-color .25s,color .25s,transform .18s ease-out" style-hover="border-color:#E6B94E;color:#E6B94E">BOOK FREE TRIAL</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:20px;margin-top:56px;max-width:760px;animation:heroUp .9s cubic-bezier(.22,.7,.2,1) .55s both">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+        <div style="border-left:2px solid rgba(230,185,78,.5);padding-left:16px">
+          <div style="display:flex;align-items:baseline;gap:4px;font-family:'Bebas Neue';font-size:clamp(34px,4vw,52px);line-height:1;color:#F4F2EE">
+            <span data-counter data-value="{{ s.value }}" data-decimals="{{ s.decimals }}" data-suffix="{{ s.suffix }}">{{ s.display }}</span>
+            <sc-if value="{{ s.star }}" hint-placeholder-val="{{ false }}"><span style="color:#E6B94E;font-size:.6em">★</span></sc-if>
+          </div>
+          <div style="font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:#9C9A96;margin-top:7px">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:floatY 2.4s ease-in-out infinite;pointer-events:none">
+    <span style="font-size:10.5px;letter-spacing:3px;color:#8A8884;text-transform:uppercase">Scroll</span>
+    <span style="width:1px;height:38px;background:linear-gradient(#E6B94E,transparent)"></span>
+  </div>
+</section>
+
+<!-- ===== MOTIVATION MARQUEE ===== -->
+<div style="position:relative;z-index:3;overflow:hidden;background:linear-gradient(90deg,#E53935,#F07A2E,#E6B94E);padding:15px 0;transform:rotate(-1.1deg) scale(1.04);margin:-26px 0;box-shadow:0 18px 50px rgba(0,0,0,.45)">
+  <div style="display:flex;width:max-content;animation:marquee 28s linear infinite;will-change:transform">
+    <sc-for list="{{ marqueeWords }}" as="mw" hint-placeholder-count="8">
+      <span style="display:flex;align-items:center;gap:34px;padding:0 17px;white-space:nowrap;font-family:'Anton';font-size:clamp(17px,2.2vw,26px);letter-spacing:2.5px;color:#0B0B0C;text-transform:uppercase">{{ mw }}<span style="width:10px;height:10px;transform:rotate(45deg);background:#0B0B0C;opacity:.8"></span></span>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" style="position:relative;padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+    <div data-reveal style="position:relative">
+      <div style="position:absolute;inset:-14px -14px 24px 24px;border:1.5px solid rgba(230,185,78,.35);border-radius:16px;pointer-events:none"></div>
+      <img src="assets/reception.webp" alt="Arya Fitness reception" style="width:100%;height:clamp(360px,48vw,540px);object-fit:cover;border-radius:14px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.6)">
+      <div style="position:absolute;left:20px;bottom:20px;background:rgba(11,11,12,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 20px">
+        <div style="font-family:'Bebas Neue';font-size:40px;line-height:.9;color:#E6B94E">5+</div>
+        <div style="font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:#C4C2BE;margin-top:4px">Years Strong</div>
+      </div>
+    </div>
+    <div data-reveal>
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:16px">About Arya Fitness</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,68px);line-height:.98;letter-spacing:.5px;margin:0;text-transform:uppercase">More Than A Gym.<br><span style="color:#E53935">A Lifestyle.</span></h2>
+      <p style="font-size:16px;line-height:1.75;color:#B4B2AE;margin:22px 0 0;max-width:52ch">Born in Panvel and built for people who refuse to settle, Arya Fitness blends premium equipment with a community that pushes you further. From your first rep to your strongest lift, our certified trainers walk every step with you — because transformation is a lifestyle, not a phase.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:32px">
+        <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:12px;padding:15px 16px;background:#131316;border:1px solid rgba(255,255,255,.06);border-radius:11px;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-3px)">
+            <span style="width:9px;height:9px;transform:rotate(45deg);background:linear-gradient(135deg,#E53935,#E6B94E);flex-shrink:0"></span>
+            <span style="font-size:14.5px;font-weight:600;color:#EAE8E4">{{ h }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACILITIES ===== -->
+<section id="facilities" style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0F0F11;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="max-width:640px;margin-bottom:clamp(36px,5vw,60px)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">World-Class Facilities</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Everything You Need<br>Under One Roof</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px">
+      <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="0">
+        <div data-reveal data-tilt style="position:relative;height:300px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:transform .3s,box-shadow .3s" style-hover="box-shadow:0 24px 50px rgba(0,0,0,.55)">
+          <img src="{{ f.img }}" alt="{{ f.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease" style-hover="transform:scale(1.09)">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.15) 0%,rgba(11,11,12,.35) 45%,rgba(11,11,12,.94) 100%);pointer-events:none"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:22px;pointer-events:none">
+            <div style="width:34px;height:3px;background:linear-gradient(90deg,#E53935,#E6B94E);margin-bottom:12px;border-radius:2px"></div>
+            <h3 style="font-family:'Bebas Neue';font-weight:400;font-size:26px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#fff">{{ f.name }}</h3>
+            <p style="font-size:13px;line-height:1.5;color:#C4C2BE;margin:6px 0 0">{{ f.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMBERSHIP ===== -->
+<section id="membership" style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="text-align:center;margin-bottom:clamp(40px,5vw,64px)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Membership Plans</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Choose Your Commitment</h2>
+      <p style="font-size:15.5px;color:#9C9A96;margin:16px auto 0;max-width:48ch">No hidden fees. Every plan includes full floor access, expert guidance and a community that shows up.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:stretch">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div data-reveal data-tilt style="position:relative;display:flex;flex-direction:column;padding:34px 28px;border-radius:18px;background:{{ p.bg }};border:{{ p.border }};box-shadow:{{ p.shadow }};transition:transform .3s">
+          <sc-if value="{{ p.popular }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-family:'Bebas Neue';font-size:15px;letter-spacing:2px;color:#0B0B0C;background:linear-gradient(90deg,#E53935,#E6B94E);padding:6px 20px;border-radius:100px;white-space:nowrap">MOST POPULAR</div>
+          </sc-if>
+          <div style="font-family:'Bebas Neue';font-size:26px;letter-spacing:1.5px;text-transform:uppercase;color:{{ p.nameColor }}">{{ p.name }}</div>
+          <div style="font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:#9C9A96;margin-top:4px">{{ p.period }}</div>
+          <div style="display:flex;align-items:baseline;gap:4px;margin:22px 0 4px">
+            <span style="font-size:20px;color:#B4B2AE;font-weight:600">₹</span>
+            <span style="font-family:'Anton';font-size:52px;line-height:1;color:#F4F2EE">{{ p.price }}</span>
+          </div>
+          <div style="font-size:13px;color:#8A8884;margin-bottom:24px">{{ p.sub }}</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;flex:1">
+            <sc-for list="{{ p.features }}" as="ft" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#CDCBC7">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(230,185,78,.15);color:#E6B94E;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0">✓</span>
+                {{ ft }}
+              </div>
+            </sc-for>
+          </div>
+          <a href="#contact" style="text-align:center;font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;padding:14px;border-radius:10px;transition:all .25s;color:{{ p.ctaColor }};background:{{ p.ctaBg }};border:{{ p.ctaBorder }}" style-hover="transform:translateY(-2px);filter:brightness(1.08)">JOIN NOW</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE + COUNTERS ===== -->
+<section style="position:relative;padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background-image:linear-gradient(rgba(11,11,12,.9),rgba(11,11,12,.92)),url('assets/dark-wide.webp');background-size:cover;background-position:center;background-attachment:{{ parallaxAttach }}">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="text-align:center;margin-bottom:clamp(40px,5vw,60px)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Why Choose Arya</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Built Different. Built To Last.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:clamp(44px,5vw,64px)">
+      <sc-for list="{{ whyChoose }}" as="w" hint-placeholder-count="4">
+        <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
+          <div style="width:52px;height:52px;margin:0 auto 16px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(229,57,53,.18),rgba(230,185,78,.18));border:1px solid rgba(230,185,78,.3)">
+            <span style="width:14px;height:14px;transform:rotate(45deg);background:linear-gradient(135deg,#E53935,#E6B94E)"></span>
+          </div>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">{{ w.title }}</h3>
+          <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">{{ w.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding:36px clamp(20px,4vw,48px);background:rgba(230,185,78,.05);border:1px solid rgba(230,185,78,.18);border-radius:18px">
+      <sc-for list="{{ counters }}" as="c" hint-placeholder-count="4">
+        <div style="text-align:center">
+          <div style="display:flex;align-items:baseline;justify-content:center;gap:2px;font-family:'Anton';font-size:clamp(38px,4.5vw,58px);line-height:1;background:linear-gradient(90deg,#E53935,#E6B94E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
+            <span data-counter data-value="{{ c.value }}" data-decimals="{{ c.decimals }}" data-suffix="{{ c.suffix }}">{{ c.display }}</span>
+          </div>
+          <div style="font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:#B4B2AE;margin-top:8px">{{ c.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRAINERS ===== -->
+<section style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:clamp(36px,5vw,56px)">
+      <div>
+        <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Personal Trainers</div>
+        <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Coaches In Your Corner</h2>
+      </div>
+      <p style="max-width:38ch;font-size:14.5px;line-height:1.65;color:#9C9A96;margin:0">Certified, experienced and relentlessly supportive. Book a one-on-one and train with purpose.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px">
+      <sc-for list="{{ trainers }}" as="t" hint-placeholder-count="4">
+        <div data-reveal style="background:#131316;border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s" style-hover="transform:translateY(-6px);border-color:rgba(230,185,78,.35)">
+          <div style="position:relative;height:250px;background-color:#17171B;background-image:repeating-linear-gradient(135deg,#1A1A1F 0 12px,#151519 12px 24px);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-family:'Bebas Neue';font-size:60px;line-height:1;color:rgba(230,185,78,.5)">{{ t.initials }}</div>
+              <div style="font-family:monospace;font-size:10.5px;letter-spacing:1px;color:#5A5854;margin-top:6px">TRAINER PHOTO</div>
+            </div>
+            <div style="position:absolute;top:12px;right:12px;font-size:11px;font-weight:600;letter-spacing:1px;color:#0B0B0C;background:#E6B94E;padding:4px 10px;border-radius:100px">{{ t.exp }}</div>
+          </div>
+          <div style="padding:20px">
+            <h3 style="font-family:'Bebas Neue';font-size:24px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">{{ t.name }}</h3>
+            <div style="font-size:13px;color:#E6B94E;margin-top:3px">{{ t.spec }}</div>
+            <div style="font-size:12.5px;color:#8A8884;margin-top:10px;line-height:1.5">{{ t.certs }}</div>
+            <a href="#contact" style="display:block;text-align:center;margin-top:18px;font-family:'Bebas Neue';font-size:17px;letter-spacing:1.5px;padding:11px;border-radius:9px;border:1.5px solid rgba(255,255,255,.16);color:#F4F2EE;transition:all .25s" style-hover="background:linear-gradient(90deg,#E53935,#E6B94E);border-color:transparent;color:#0B0B0C">BOOK TRAINER</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUCCESS STORIES ===== -->
+<section id="transformations" style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0F0F11;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="text-align:center;margin-bottom:clamp(40px,5vw,60px)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Success Stories</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Real People. Real Results.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+      <sc-for list="{{ stories }}" as="st" hint-placeholder-count="3">
+        <div data-reveal style="background:#131316;border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="position:relative;height:200px;background-image:repeating-linear-gradient(135deg,#1A1A1F 0 12px,#151519 12px 24px);display:flex;align-items:center;justify-content:center">
+              <span style="font-family:monospace;font-size:11px;letter-spacing:1px;color:#5A5854">BEFORE</span>
+            </div>
+            <div style="position:relative;height:200px;background-image:repeating-linear-gradient(135deg,#22201A 0 12px,#1B1914 12px 24px);display:flex;align-items:center;justify-content:center;border-left:2px solid #E6B94E">
+              <span style="font-family:monospace;font-size:11px;letter-spacing:1px;color:#8A7A4A">AFTER</span>
+            </div>
+          </div>
+          <div style="padding:22px">
+            <div style="display:flex;gap:22px;margin-bottom:14px">
+              <div>
+                <div style="font-family:'Bebas Neue';font-size:30px;line-height:1;color:#E53935">{{ st.lost }}</div>
+                <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8A8884;margin-top:3px">Lost</div>
+              </div>
+              <div>
+                <div style="font-family:'Bebas Neue';font-size:30px;line-height:1;color:#E6B94E">{{ st.time }}</div>
+                <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8A8884;margin-top:3px">Timeline</div>
+              </div>
+            </div>
+            <p style="font-size:14px;line-height:1.6;color:#B4B2AE;margin:0">“{{ st.quote }}”</p>
+            <div style="font-family:'Bebas Neue';font-size:18px;letter-spacing:1px;color:#F4F2EE;margin-top:14px">— {{ st.name }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="text-align:center;margin-top:44px">
+      <a href="#membership" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#0B0B0C;padding:16px 44px;border-radius:9px;background:linear-gradient(90deg,#E53935,#E6B94E);display:inline-block;box-shadow:0 14px 34px rgba(229,57,53,.35);transition:transform .2s" style-hover="transform:translateY(-3px)">START YOUR JOURNEY</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="max-width:640px;margin-bottom:clamp(36px,5vw,56px)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Inside The Club</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">The Arya Gallery</h2>
+    </div>
+    <div style="columns:360px;column-gap:16px" data-gallery>
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="0">
+        <div style="break-inside:avoid;margin-bottom:16px;border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.06)" onClick="{{ g.open }}">
+          <img src="{{ g.img }}" alt="Arya Fitness gallery" style="width:100%;display:block;transition:transform .55s ease" style-hover="transform:scale(1.06)">
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="reviews" style="position:relative;padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0F0F11;border-top:1px solid rgba(255,255,255,.05);overflow:hidden">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">What Members Say</div>
+    <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,60px);line-height:.98;margin:0 0 44px;text-transform:uppercase">Loved By The Community</h2>
+    <div style="overflow:hidden;border-radius:18px">
+      <div style="display:flex;transition:transform .6s cubic-bezier(.7,0,.2,1);transform:{{ tShift }}">
+        <sc-for list="{{ testimonials }}" as="tm" hint-placeholder-count="3">
+          <div style="min-width:100%;padding:clamp(30px,5vw,56px);box-sizing:border-box">
+            <div style="color:#E6B94E;font-size:22px;letter-spacing:4px;margin-bottom:22px">★★★★★</div>
+            <p style="font-family:'Inter';font-size:clamp(18px,2.6vw,27px);line-height:1.5;color:#EAE8E4;margin:0;font-weight:500">“{{ tm.quote }}”</p>
+            <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#9C9A96;margin-top:26px">{{ tm.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:28px">
+      <sc-for list="{{ testimonials }}" as="tm" hint-placeholder-count="3">
+        <button onClick="{{ tm.go }}" aria-label="Review" style="width:{{ tm.dotW }};height:9px;border-radius:100px;border:none;cursor:pointer;background:{{ tm.dotBg }};transition:all .3s"></button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOOGLE REVIEWS ===== -->
+<section style="padding:clamp(60px,7vw,100px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div data-reveal style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(24px,5vw,64px);padding:clamp(32px,4vw,48px);background:#131316;border:1px solid rgba(255,255,255,.08);border-radius:20px;text-align:center">
+    <div>
+      <div style="font-family:'Anton';font-size:clamp(64px,9vw,104px);line-height:.9;background:linear-gradient(90deg,#E53935,#E6B94E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">4.8</div>
+      <div style="color:#E6B94E;font-size:22px;letter-spacing:4px;margin-top:6px">★★★★★</div>
+    </div>
+    <div style="text-align:left;max-width:36ch">
+      <div style="font-family:'Bebas Neue';font-size:30px;letter-spacing:1px;text-transform:uppercase;color:#F4F2EE">Rated On Google</div>
+      <p style="font-size:14.5px;line-height:1.6;color:#A2A09C;margin:8px 0 18px">Hundreds of members trust Arya Fitness to show up for their goals — every single day.</p>
+      <a href="#contact" style="font-family:'Bebas Neue';font-size:18px;letter-spacing:1.5px;color:#F4F2EE;padding:12px 26px;border:1.5px solid rgba(230,185,78,.5);border-radius:9px;display:inline-block;transition:all .25s" style-hover="background:#E6B94E;color:#0B0B0C;border-color:#E6B94E">READ MORE REVIEWS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUTLINE MARQUEE ===== -->
+<div style="position:relative;overflow:hidden;background:#0B0B0C;border-top:1px solid rgba(230,185,78,.22);border-bottom:1px solid rgba(230,185,78,.22);padding:18px 0">
+  <div style="display:flex;width:max-content;animation:marquee 34s linear infinite reverse;will-change:transform">
+    <sc-for list="{{ marqueeWords }}" as="mw" hint-placeholder-count="8">
+      <span style="display:flex;align-items:center;gap:34px;padding:0 17px;white-space:nowrap;font-family:'Anton';font-size:clamp(20px,2.6vw,32px);letter-spacing:2.5px;color:transparent;-webkit-text-stroke:1.3px rgba(230,185,78,.75);text-transform:uppercase">{{ mw }}<span style="width:10px;height:10px;transform:rotate(45deg);border:1.3px solid rgba(230,185,78,.75)"></span></span>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ===== CTA BANNER ===== -->
+<section style="position:relative;padding:clamp(64px,8vw,120px) clamp(18px,5vw,80px);background:linear-gradient(115deg,#B5271F 0%,#E53935 38%,#F07A2E 68%,#E6B94E 100%);overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:url('assets/mural-nevergiveup.webp');background-size:cover;background-position:center;opacity:.14;mix-blend-mode:overlay;pointer-events:none"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto;text-align:center">
+    <h2 style="font-family:'Anton';font-weight:400;font-size:clamp(36px,6vw,80px);line-height:.98;margin:0;text-transform:uppercase;color:#0B0B0C;text-shadow:0 3px 20px rgba(0,0,0,.15)">Ready To Become Your<br>Strongest Version?</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px">
+      <a href="#membership" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#F4F2EE;padding:16px 42px;border-radius:9px;background:#0B0B0C;box-shadow:0 14px 34px rgba(0,0,0,.3);transition:transform .2s" style-hover="transform:translateY(-3px)">JOIN TODAY</a>
+      <a href="#contact" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#0B0B0C;padding:16px 42px;border-radius:9px;border:2px solid #0B0B0C;transition:all .25s" style-hover="background:#0B0B0C;color:#F4F2EE">BOOK FREE TRIAL</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" style="padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px);background:#0B0B0C">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal style="margin-bottom:clamp(36px,5vw,56px);max-width:600px">
+      <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:14px">Get In Touch</div>
+      <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Start Today</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:28px">
+      <div>
+        <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);height:260px">
+          <iframe title="Arya Fitness location" src="https://www.google.com/maps?q=Khanda+Colony+Sector+8+Panvel+Maharashtra+410206&output=embed" style="width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05)" loading="lazy"></iframe>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px">
+          <sc-for list="{{ contactInfo }}" as="ci" hint-placeholder-count="3">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="width:38px;height:38px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(230,185,78,.12);border:1px solid rgba(230,185,78,.3)"><span style="width:11px;height:11px;transform:rotate(45deg);background:linear-gradient(135deg,#E53935,#E6B94E)"></span></span>
+              <div>
+                <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#8A8884">{{ ci.label }}</div>
+                <div style="font-size:15px;color:#EAE8E4;margin-top:3px;line-height:1.5;white-space:pre-line">{{ ci.value }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#131316;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:clamp(24px,3vw,36px)">
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:340px">
+            <div style="width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,#E53935,#E6B94E);display:flex;align-items:center;justify-content:center;font-size:34px;color:#0B0B0C;margin-bottom:20px">✓</div>
+            <h3 style="font-family:'Bebas Neue';font-size:32px;letter-spacing:1px;margin:0;text-transform:uppercase">You're In!</h3>
+            <p style="font-size:15px;color:#A2A09C;margin:10px 0 0;max-width:32ch">Thanks for reaching out. Our team will call you shortly to lock in your free trial.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:15px">
+            <input required placeholder="Full Name" style="background:#0F0F11;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#F4F2EE;font-size:15px;outline:none" style-focus="border-color:#E6B94E">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <input required placeholder="Phone" style="background:#0F0F11;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#F4F2EE;font-size:15px;outline:none;min-width:0" style-focus="border-color:#E6B94E">
+              <input placeholder="Email" type="email" style="background:#0F0F11;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#F4F2EE;font-size:15px;outline:none;min-width:0" style-focus="border-color:#E6B94E">
+            </div>
+            <select required style="background:#0F0F11;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#F4F2EE;font-size:15px;outline:none" style-focus="border-color:#E6B94E">
+              <option value="" style="background:#131316">Your Goal</option>
+              <option style="background:#131316">Weight Loss</option>
+              <option style="background:#131316">Muscle Gain</option>
+              <option style="background:#131316">General Fitness</option>
+              <option style="background:#131316">Personal Training</option>
+            </select>
+            <textarea placeholder="Message (optional)" rows="4" style="background:#0F0F11;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#F4F2EE;font-size:15px;outline:none;resize:vertical" style-focus="border-color:#E6B94E"></textarea>
+            <button type="submit" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1.5px;color:#0B0B0C;padding:16px;border:none;border-radius:10px;background:linear-gradient(90deg,#E53935,#E6B94E);cursor:pointer;box-shadow:0 12px 30px rgba(229,57,53,.3);transition:transform .2s" style-hover="transform:translateY(-2px)">BOOK MY FREE TRIAL</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="padding:clamp(50px,6vw,80px) clamp(18px,5vw,80px) 40px;background:#08080A;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
+    <div style="max-width:300px">
+      <img src="assets/logo.png" alt="Arya Fitness" style="height:46px;margin-bottom:18px">
+      <p style="font-size:14px;line-height:1.65;color:#8A8884;margin:0">Panvel's premium destination for strength, discipline and transformation. Never give up.</p>
+    </div>
+    <div>
+      <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#E6B94E;margin-bottom:16px">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ footerLinks }}" as="fl" hint-placeholder-count="4">
+          <a href="{{ fl.href }}" style="font-size:14px;color:#B4B2AE;transition:color .2s" style-hover="color:#E6B94E">{{ fl.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#E6B94E;margin-bottom:16px">Connect</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ socials }}" as="so" hint-placeholder-count="4">
+          <a href="#contact" style="font-size:14px;color:#B4B2AE;transition:color .2s" style-hover="color:#E6B94E">{{ so }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#E6B94E;margin-bottom:16px">Visit Us</div>
+      <p style="font-size:14px;line-height:1.7;color:#B4B2AE;margin:0">Shop No. 10–12, Sai Sharan CHS,<br>Plot No. 15, Sector 8, Khanda Colony,<br>Panvel, Maharashtra 410206</p>
+      <div style="font-size:14px;color:#E6B94E;margin-top:12px">+91 97691 75617</div>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:44px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px;color:#6A6864">
+    <span>© 2026 Arya Fitness · Health &amp; Fitness. All rights reserved.</span>
+    <span>Open 6 AM onwards · Panvel, Maharashtra</span>
+  </div>
+</footer>
+
+<!-- ===== FLOATING ACTIONS ===== -->
+<a href="https://wa.me/919769175617" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:20px;bottom:{{ fabBottom }};z-index:70;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(37,211,102,.45);transition:transform .2s" style-hover="transform:scale(1.08)">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C5 9.5 9.9 5 16 5s10 4.5 10 10-4.5 9.8-10 9.8zm5.5-7.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1c-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3 2 3.1 4.9 4.3c1.8.8 2.5.9 3.4.7.5-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+<sc-if value="{{ showTop }}" hint-placeholder-val="{{ false }}">
+  <button onClick="{{ scrollTop }}" aria-label="Back to top" style="position:fixed;right:20px;bottom:{{ topBtnBottom }};z-index:70;width:46px;height:46px;border-radius:12px;background:#1A1A1E;border:1px solid rgba(230,185,78,.4);color:#E6B94E;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 22px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">↑</button>
+</sc-if>
+
+<!-- ===== MOBILE BOTTOM CTA ===== -->
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;gap:10px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(9,9,10,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08)">
+    <a href="#membership" style="flex:1;text-align:center;font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#0B0B0C;padding:13px;border-radius:10px;background:linear-gradient(90deg,#E53935,#E6B94E)">JOIN NOW</a>
+    <a href="#contact" style="flex:1;text-align:center;font-family:'Bebas Neue';font-size:20px;letter-spacing:1.5px;color:#F4F2EE;padding:13px;border-radius:10px;border:1.5px solid rgba(255,255,255,.25)">FREE TRIAL</a>
+  </div>
+</sc-if>
+
+<!-- ===== LIGHTBOX ===== -->
+<sc-if value="{{ lightbox }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:100;background:rgba(5,5,6,.94);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out">
+    <img src="{{ lightbox }}" alt="Arya Fitness" style="max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7)">
+    <button onClick="{{ closeLightbox }}" aria-label="Close" style="position:absolute;top:22px;right:24px;background:transparent;border:none;color:#fff;font-size:44px;line-height:1;cursor:pointer;font-family:'Bebas Neue'">×</button>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { scrolled:false, menuOpen:false, isMobile:false, lightbox:null, tIndex:0, submitted:false, showTop:false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const y = window.scrollY || 0;
+      const sc = y > 46, top = y > 620;
+      if (sc !== this.state.scrolled || top !== this.state.showTop) this.setState({ scrolled: sc, showTop: top });
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const bar = this._pbar || (this._pbar = document.querySelector('[data-progress]'));
+      if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive:true });
+
+    this._mq = window.matchMedia('(max-width:880px)');
+    this._onMq = e => this.setState({ isMobile: e.matches });
+    this.setState({ isMobile: this._mq.matches });
+    this._mq.addEventListener('change', this._onMq);
+
+    this._timer = setInterval(() => {
+      this.setState(s => ({ tIndex: (s.tIndex + 1) % this._testis.length }));
+    }, 5200);
+
+    this._onKey = e => { if (e.key === 'Escape') this.setState({ lightbox:null, menuOpen:false }); };
+    window.addEventListener('keydown', this._onKey);
+
+    setTimeout(() => { this._initCounters(); this._initReveal(); this._initMagnetic(); this._initTilt(); }, 120);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('keydown', this._onKey);
+    if (this._mq) this._mq.removeEventListener('change', this._onMq);
+    clearInterval(this._timer);
+    if (this._io) this._io.disconnect();
+    if (this._rio) this._rio.disconnect();
+  }
+
+  _initCounters() {
+    const els = Array.from(document.querySelectorAll('[data-counter]'));
+    els.forEach(el => { el.__done = false; });
+    this._io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        const el = en.target;
+        if (en.isIntersecting && !el.__done) {
+          el.__done = true;
+          const val = parseFloat(el.getAttribute('data-value')) || 0;
+          const dec = parseInt(el.getAttribute('data-decimals')) || 0;
+          const suf = el.getAttribute('data-suffix') || '';
+          const dur = 1500, t0 = performance.now();
+          const tick = now => {
+            const p = Math.min(1, (now - t0) / dur);
+            const e = 1 - Math.pow(1 - p, 3);
+            el.textContent = (val * e).toFixed(dec) + suf;
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = val.toFixed(dec) + suf;
+          };
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.4 });
+    els.forEach(el => this._io.observe(el));
+  }
+
+  _initReveal() {
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const parentCount = new Map();
+    els.forEach(el => {
+      const n = parentCount.get(el.parentElement) || 0;
+      parentCount.set(el.parentElement, n + 1);
+      el.__stagger = Math.min(n, 5) * 90;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity .7s ease ' + el.__stagger + 'ms, transform .7s cubic-bezier(.22,.7,.2,1) ' + el.__stagger + 'ms';
+    });
+    this._rio = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const el = en.target;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          this._rio.unobserve(el);
+          // release inline transform/transition so hover & tilt run unhindered
+          setTimeout(() => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; }, 800 + el.__stagger);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => this._rio.observe(el));
+  }
+
+  _initMagnetic() {
+    if (window.matchMedia('(hover:none)').matches || window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    document.querySelectorAll('[data-magnetic]').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        el.style.transform = 'translate(' + (x * 6).toFixed(1) + 'px,' + (y * 4).toFixed(1) + 'px)';
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  _initTilt() {
+    if (window.matchMedia('(hover:none)').matches || window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (el.style.opacity === '0') return; // still hidden pre-reveal
+        el.style.transition = 'transform .14s ease-out, box-shadow .3s ease';
+        el.style.willChange = 'transform';
+      });
+      el.addEventListener('mousemove', e => {
+        if (el.style.opacity === '0') return;
+        const r = el.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * -6;
+        const ry = ((e.clientX - r.left) / r.width - .5) * 8;
+        el.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateY(-6px)';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transition = 'transform .45s cubic-bezier(.22,.7,.2,1), box-shadow .3s ease';
+        el.style.transform = '';
+        el.style.willChange = '';
+      });
+    });
+  }
+
+  get _testis() {
+    return [
+      { quote:'The staff is friendly and helpful, and the overall atmosphere is motivating.', name:'Google Review' },
+      { quote:'Great place to workout, trainers are very helpful.', name:'Google Review' },
+      { quote:'Amazing facility with good equipment and a great environment.', name:'Google Review' }
+    ];
+  }
+
+  renderVals() {
+    const s = this.state;
+    const sc = s.scrolled;
+    return {
+      isDesktop: !s.isMobile,
+      isMobile: s.isMobile,
+
+      parallaxAttach: s.isMobile ? 'scroll' : 'fixed',
+      pageBottomPad: s.isMobile ? '78px' : '0px',
+      fabBottom: s.isMobile ? '84px' : '22px',
+      topBtnBottom: s.isMobile ? '148px' : '88px',
+      menuOpen: s.menuOpen,
+      showTop: s.showTop,
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      lightbox: s.lightbox,
+
+      headerBg: sc ? 'rgba(11,11,12,0.94)' : 'transparent',
+      headerBlur: sc ? 'blur(14px)' : 'blur(0px)',
+      headerBorder: sc ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
+      headerShadow: sc ? '0 10px 34px rgba(0,0,0,0.5)' : 'none',
+      headerPad: sc ? '13px' : '22px',
+
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen:false }),
+      scrollTop: () => window.scrollTo({ top:0, behavior:'smooth' }),
+      closeLightbox: () => this.setState({ lightbox:null }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted:true }); },
+
+      navLinks: [
+        { label:'Home', href:'#home' },
+        { label:'About', href:'#about' },
+        { label:'Facilities', href:'#facilities' },
+        { label:'Membership', href:'#membership' },
+        { label:'Transformations', href:'#transformations' },
+        { label:'Gallery', href:'#gallery' },
+        { label:'Reviews', href:'#reviews' },
+        { label:'Contact', href:'#contact' }
+      ],
+
+      heroStats: [
+        { value:4.8, decimals:1, suffix:'', display:'4.8', label:'Google Rating', star:true },
+        { value:500, decimals:0, suffix:'+', display:'500+', label:'Members', star:false },
+        { value:5, decimals:0, suffix:'+', display:'5+', label:'Years Experience', star:false },
+        { value:100, decimals:0, suffix:'%', display:'100%', label:'Motivation', star:false }
+      ],
+
+      marqueeWords: (() => { const w = ['No Pain No Gain','Train Hard','Stay Consistent','Never Give Up','Push Your Limits','Earn Your Body','Discipline Over Motivation','Sweat Now Shine Later']; return w.concat(w); })(),
+
+      highlights: ['Certified Trainers','Modern Equipment','Personal Training','Group Workouts','Nutrition Guidance','Community Driven'],
+
+      facilities: [
+        { name:'Strength Zone', desc:'Olympic bars, bumper plates & power racks.', img:'assets/racks-color.webp' },
+        { name:'Cardio Zone', desc:'Premium treadmills & endurance machines.', img:'assets/cardio-treadmill.webp' },
+        { name:'Functional Training', desc:'Cable stations & full-body movement.', img:'assets/cable-zone.webp' },
+        { name:'CrossFit Area', desc:'Smith machines & compound lifts.', img:'assets/smith-rack.webp' },
+        { name:'Weight Training', desc:'Full dumbbell range & benches.', img:'assets/dumbbells-gold.webp' },
+        { name:'Locker Rooms', desc:'Secure storage & changing space.', img:'assets/locker.webp' },
+        { name:'Premium Washrooms', desc:'Black-marble finish & LED mirrors.', img:'assets/washroom.webp' },
+        { name:'Stretch & Recovery', desc:'Bright, open mobility corner.', img:'assets/daylight-bench.webp' }
+      ],
+
+      plans: [
+        { name:'Starter', period:'Monthly', price:'1,499', sub:'per month · billed monthly', popular:false,
+          bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
+          ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
+          features:['Full floor & equipment access','Locker room access','Group workout classes','Fitness assessment'] },
+        { name:'Popular', period:'Quarterly', price:'3,999', sub:'3 months · save 11%', popular:true,
+          bg:'linear-gradient(180deg,#1B1712,#131316)', border:'1.5px solid rgba(230,185,78,.55)', shadow:'0 24px 60px rgba(230,185,78,.16)', nameColor:'#E6B94E',
+          ctaColor:'#0B0B0C', ctaBg:'linear-gradient(90deg,#E53935,#E6B94E)', ctaBorder:'none',
+          features:['Everything in Starter','2 personal training sessions','Cardio + weights priority','Nutrition guidance','Guest passes'] },
+        { name:'Elite', period:'Annual', price:'11,999', sub:'12 months · best value', popular:false,
+          bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
+          ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
+          features:['Everything in Popular','Unlimited group classes','Monthly PT sessions','Custom diet planning','Priority support'] }
+      ],
+
+      whyChoose: [
+        { title:'Certified Trainers', desc:'Qualified coaches who tailor every plan to you.' },
+        { title:'Latest Equipment', desc:'Commercial-grade machines, meticulously maintained.' },
+        { title:'Supportive Community', desc:'Train alongside people who lift you higher.' },
+        { title:'Affordable Membership', desc:'Premium experience, honest Panvel pricing.' }
+      ],
+
+      counters: [
+        { value:500, decimals:0, suffix:'+', display:'500+', label:'Active Members' },
+        { value:25, decimals:0, suffix:'+', display:'25+', label:'Equipment Machines' },
+        { value:5, decimals:0, suffix:'+', display:'5+', label:'Years Strong' },
+        { value:98, decimals:0, suffix:'%', display:'98%', label:'Would Recommend' }
+      ],
+
+      trainers: [
+        { name:'Aarav Deshmukh', initials:'AD', spec:'Strength & Conditioning', exp:'8 YRS', certs:'ACE Certified · Powerlifting Coach' },
+        { name:'Sana Kulkarni', initials:'SK', spec:'Fat Loss & HIIT', exp:'6 YRS', certs:'K11 Certified · Nutrition Specialist' },
+        { name:'Vikram Patil', initials:'VP', spec:'Bodybuilding & Hypertrophy', exp:'10 YRS', certs:'ISSA Certified · Contest Prep' },
+        { name:'Neha Joshi', initials:'NJ', spec:'Functional & Mobility', exp:'5 YRS', certs:'ACSM Certified · Rehab Training' }
+      ],
+
+      stories: [
+        { lost:'18 KG', time:'6 Months', name:'Rahul M.', quote:'Arya changed how I see myself. The trainers never let me quit.' },
+        { lost:'12 KG', time:'4 Months', name:'Priya S.', quote:'From zero confidence to my strongest self. This place is family.' },
+        { lost:'22 KG', time:'9 Months', name:'Amit K.', quote:'Consistency, coaching and community. It genuinely works.' }
+      ],
+
+      gallery: ['assets/floor-people.webp','assets/mural-nevergiveup.webp','assets/hanuman.webp','assets/dumbbells-gold.webp','assets/smith-rack.webp','assets/dark-wide.webp','assets/floor-wide.webp','assets/benches.webp','assets/daylight-bench.webp','assets/hanuman-floor.webp','assets/dumbbell-rack.webp','assets/mural-restroom.webp'].map(img => ({ img, open: () => this.setState({ lightbox: img }) })),
+
+      testimonials: this._testis.map((t, i) => ({
+        quote: t.quote, name: t.name,
+        go: () => this.setState({ tIndex: i }),
+        dotW: i === s.tIndex ? '26px' : '9px',
+        dotBg: i === s.tIndex ? 'linear-gradient(90deg,#E53935,#E6B94E)' : 'rgba(255,255,255,.2)'
+      })),
+      tShift: `translateX(-${s.tIndex * 100}%)`,
+
+      contactInfo: [
+        { label:'Address', value:'Shop No. 10–12, Sai Sharan CHS,\nPlot No. 15, Sector 8, Khanda Colony,\nPanvel, Maharashtra 410206' },
+        { label:'Phone', value:'+91 97691 75617' },
+        { label:'Business Hours', value:'Open 6:00 AM onwards · Daily' }
+      ],
+
+      footerLinks: [
+        { label:'Membership', href:'#membership' },
+        { label:'Facilities', href:'#facilities' },
+        { label:'Gallery', href:'#gallery' },
+        { label:'Reviews', href:'#reviews' },
+        { label:'Contact', href:'#contact' }
+      ],
+      socials: ['Instagram','Facebook','WhatsApp','Google Maps']
+    };
+  }
+}
+</script>
+</body>
+</html>
