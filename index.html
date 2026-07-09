@@ -14,7 +14,6 @@
 <meta name="ext-resource-dependency" content="assets/floor-people.webp">
 <meta name="ext-resource-dependency" content="assets/mural-nevergiveup.webp">
 <meta name="ext-resource-dependency" content="assets/hanuman.webp">
-<meta name="ext-resource-dependency" content="assets/floor-wide.webp">
 <meta name="ext-resource-dependency" content="assets/benches.webp">
 <meta name="ext-resource-dependency" content="assets/hanuman-floor.webp">
 <meta name="ext-resource-dependency" content="assets/dumbbell-rack.webp">
@@ -139,7 +138,7 @@
 </section>
 
 <!-- ===== MOTIVATION MARQUEE ===== -->
-<div style="position:relative;z-index:3;overflow:hidden;background:linear-gradient(90deg,#E53935,#F07A2E,#E6B94E);padding:15px 0;transform:rotate(-1.1deg) scale(1.04);margin:-26px 0;box-shadow:0 18px 50px rgba(0,0,0,.45)">
+<div style="position:relative;z-index:3;overflow:hidden;background:linear-gradient(90deg,#E53935,#F07A2E,#E6B94E);padding:15px 0;box-shadow:0 8px 24px rgba(0,0,0,.35)">
   <div style="display:flex;width:max-content;animation:marquee 28s linear infinite;will-change:transform">
     <sc-for list="{{ marqueeWords }}" as="mw" hint-placeholder-count="8">
       <span style="display:flex;align-items:center;gap:34px;padding:0 17px;white-space:nowrap;font-family:'Anton';font-size:clamp(17px,2.2vw,26px);letter-spacing:2.5px;color:#0B0B0C;text-transform:uppercase">{{ mw }}<span style="width:10px;height:10px;transform:rotate(45deg);background:#0B0B0C;opacity:.8"></span></span>
@@ -153,10 +152,7 @@
     <div data-reveal style="position:relative">
       <div style="position:absolute;inset:-14px -14px 24px 24px;border:1.5px solid rgba(230,185,78,.35);border-radius:16px;pointer-events:none"></div>
       <img src="assets/reception.webp" alt="Arya Fitness reception" style="width:100%;height:clamp(360px,48vw,540px);object-fit:cover;border-radius:14px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.6)">
-      <div style="position:absolute;left:20px;bottom:20px;background:rgba(11,11,12,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 20px">
-        <div style="font-family:'Bebas Neue';font-size:40px;line-height:.9;color:#E6B94E">5+</div>
-        <div style="font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:#C4C2BE;margin-top:4px">Years Strong</div>
-      </div>
+
     </div>
     <div data-reveal>
       <div style="font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E6B94E;margin-bottom:16px">About Arya Fitness</div>
@@ -230,6 +226,20 @@
         </div>
       </sc-for>
     </div>
+    <div data-reveal style="margin-top:32px;padding:28px clamp(20px,4vw,44px);border-radius:16px;background:rgba(230,185,78,.05);border:1px solid rgba(230,185,78,.18);display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between">
+      <div>
+        <div style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;text-transform:uppercase;color:#F4F2EE">Personal Trainer Charges</div>
+        <p style="font-size:13px;color:#9C9A96;margin:6px 0 0">Add one-on-one coaching to any membership plan.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <sc-for list="{{ ptRates }}" as="pt" hint-placeholder-count="3">
+          <div style="text-align:center;padding:14px 22px;border-radius:12px;background:#131316;border:1px solid rgba(255,255,255,.08);min-width:120px">
+            <div style="font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:#9C9A96">{{ pt.period }}</div>
+            <div style="font-family:'Anton';font-size:24px;color:#E6B94E;margin-top:4px">₹{{ pt.price }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -241,15 +251,22 @@
       <h2 style="font-family:'Bebas Neue';font-weight:400;font-size:clamp(38px,5.5vw,66px);line-height:.98;margin:0;text-transform:uppercase">Built Different. Built To Last.</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:clamp(44px,5vw,64px)">
-      <sc-for list="{{ whyChoose }}" as="w" hint-placeholder-count="4">
-        <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
-          <div style="width:52px;height:52px;margin:0 auto 16px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(229,57,53,.18),rgba(230,185,78,.18));border:1px solid rgba(230,185,78,.3)">
-            <span style="width:14px;height:14px;transform:rotate(45deg);background:linear-gradient(135deg,#E53935,#E6B94E)"></span>
-          </div>
-          <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">{{ w.title }}</h3>
-          <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">{{ w.desc }}</p>
-        </div>
-      </sc-for>
+      <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
+        <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">Certified Trainers</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">Qualified coaches who tailor every plan to you.</p>
+      </div>
+      <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
+        <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">Latest Equipment</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">Commercial-grade machines, meticulously maintained.</p>
+      </div>
+      <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
+        <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">Supportive Community</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">Train alongside people who lift you higher.</p>
+      </div>
+      <div data-reveal style="padding:28px 24px;background:rgba(19,19,22,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(230,185,78,.4);transform:translateY(-5px)">
+        <h3 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin:0;text-transform:uppercase;color:#F4F2EE">Affordable Membership</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#A2A09C;margin:8px 0 0">Premium experience, honest Panvel pricing.</p>
+      </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding:36px clamp(20px,4vw,48px);background:rgba(230,185,78,.05);border:1px solid rgba(230,185,78,.18);border-radius:18px">
       <sc-for list="{{ counters }}" as="c" hint-placeholder-count="4">
@@ -708,7 +725,6 @@ class Component extends DCLogic {
       heroStats: [
         { value:4.8, decimals:1, suffix:'', display:'4.8', label:'Google Rating', star:true },
         { value:500, decimals:0, suffix:'+', display:'500+', label:'Members', star:false },
-        { value:5, decimals:0, suffix:'+', display:'5+', label:'Years Experience', star:false },
         { value:100, decimals:0, suffix:'%', display:'100%', label:'Motivation', star:false }
       ],
 
@@ -728,18 +744,32 @@ class Component extends DCLogic {
       ],
 
       plans: [
-        { name:'Starter', period:'Monthly', price:'1,499', sub:'per month · billed monthly', popular:false,
+        { name:'Basic', period:'1 Month', price:'2,000', sub:'billed monthly', popular:false,
           bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
           ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
-          features:['Full floor & equipment access','Locker room access','Group workout classes','Fitness assessment'] },
-        { name:'Popular', period:'Quarterly', price:'3,999', sub:'3 months · save 11%', popular:true,
+          features:['Full floor & equipment access','Locker room access','Group workout classes'] },
+        { name:'Standard', period:'3 Months', price:'4,500', sub:'save vs monthly', popular:false,
+          bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
+          ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
+          features:['Everything in Basic','Fitness assessment','Nutrition guidance'] },
+        { name:'Premium', period:'6 Months', price:'7,500', sub:'most popular duration', popular:true,
           bg:'linear-gradient(180deg,#1B1712,#131316)', border:'1.5px solid rgba(230,185,78,.55)', shadow:'0 24px 60px rgba(230,185,78,.16)', nameColor:'#E6B94E',
           ctaColor:'#0B0B0C', ctaBg:'linear-gradient(90deg,#E53935,#E6B94E)', ctaBorder:'none',
-          features:['Everything in Starter','2 personal training sessions','Cardio + weights priority','Nutrition guidance','Guest passes'] },
-        { name:'Elite', period:'Annual', price:'11,999', sub:'12 months · best value', popular:false,
+          features:['Everything in Standard','Cardio + weights priority','Guest passes','Custom diet planning'] },
+        { name:'Ultimate', period:'12 Months', price:'10,999', sub:'best value per month', popular:false,
           bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
           ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
-          features:['Everything in Popular','Unlimited group classes','Monthly PT sessions','Custom diet planning','Priority support'] }
+          features:['Everything in Premium','Unlimited group classes','Priority support'] },
+        { name:'Couple', period:'12 Months', price:'14,999', sub:'2 memberships, 1 year', popular:false,
+          bg:'#131316', border:'1px solid rgba(255,255,255,.08)', shadow:'none', nameColor:'#F4F2EE',
+          ctaColor:'#F4F2EE', ctaBg:'transparent', ctaBorder:'1.5px solid rgba(255,255,255,.22)',
+          features:['Everything in Ultimate','For 2 members','Train together, save together'] }
+      ],
+
+      ptRates: [
+        { period:'1 Month', price:'7,000' },
+        { period:'3 Months', price:'18,000' },
+        { period:'6 Months', price:'30,000' }
       ],
 
       whyChoose: [
@@ -752,7 +782,6 @@ class Component extends DCLogic {
       counters: [
         { value:500, decimals:0, suffix:'+', display:'500+', label:'Active Members' },
         { value:25, decimals:0, suffix:'+', display:'25+', label:'Equipment Machines' },
-        { value:5, decimals:0, suffix:'+', display:'5+', label:'Years Strong' },
         { value:98, decimals:0, suffix:'%', display:'98%', label:'Would Recommend' }
       ],
 
@@ -769,7 +798,7 @@ class Component extends DCLogic {
         { lost:'22 KG', time:'9 Months', name:'Amit K.', quote:'Consistency, coaching and community. It genuinely works.' }
       ],
 
-      gallery: ['assets/floor-people.webp','assets/mural-nevergiveup.webp','assets/hanuman.webp','assets/dumbbells-gold.webp','assets/smith-rack.webp','assets/dark-wide.webp','assets/floor-wide.webp','assets/benches.webp','assets/daylight-bench.webp','assets/hanuman-floor.webp','assets/dumbbell-rack.webp','assets/mural-restroom.webp'].map(img => ({ img, open: () => this.setState({ lightbox: img }) })),
+      gallery: ['assets/floor-people.webp','assets/mural-nevergiveup.webp','assets/hanuman.webp','assets/dumbbells-gold.webp','assets/smith-rack.webp','assets/dark-wide.webp','assets/benches.webp','assets/daylight-bench.webp','assets/hanuman-floor.webp','assets/dumbbell-rack.webp','assets/mural-restroom.webp'].map(img => ({ img, open: () => this.setState({ lightbox: img }) })),
 
       testimonials: this._testis.map((t, i) => ({
         quote: t.quote, name: t.name,
